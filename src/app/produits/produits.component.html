@@ -1,1 +1,40 @@
-<p>produits works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Produits</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+</head>
+<body>
+    <div id="cartes">
+        <div id="header">
+          <h1>La liste des produits</h1> 
+        </div>
+        <div class="container">
+          <!-- Utilisation de *ngFor pour itérer sur la liste des produits et générer une carte pour chaque produit -->
+          <div *ngFor="let produit of produits" class="card" (click)="selectProduit(produit)">
+            <div class="card-image">
+              <img [src]="produit.image" alt="{{ produit.titre }}">
+            </div>
+            <div class="card-text">
+              <!-- Affichage du titre du produit en majuscules -->
+              <h2 class="card-title">{{ produit.titre | uppercase }}</h2> 
+              <!-- Affichage du prix du produit avec deux décimales et devise en majuscules -->
+              <div class="card-price">
+                <h4>{{ produit.prix | currency:'EUR':'symbol':'1.2-2':'fr' }}</h4>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div> <br>
+      
+  
+      <!-- Affichage du composant enfant avec le produit sélectionné -->
+ <!-- Pop-up de détails du produit -->
+<app-details-produits *ngIf="produitSelectionne" [produit]="produitSelectionne" (close)="closePopup()"></app-details-produits>
+
+</body>
+</html>

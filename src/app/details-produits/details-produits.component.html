@@ -1,1 +1,25 @@
-<p>details-produits works!</p>
+ 
+<!-- details-produits.component.html -->
+<div class="detail-produit">
+  <div class="popup">
+    <button class="close" (click)="closePopup()">×</button>
+    <h2>Détails du produit</h2>
+    <div class="card">
+      <div class="card-image">
+        <img [src]="produit.image" alt="{{ produit.titre }}">
+      </div>
+      <div class="card-text">
+        <p class="card-categorie">{{ produit.categorie }}</p>
+        <h2 class="card-title">{{ produit.titre | uppercase }}</h2>
+        <p class="card-body">{{ produit.description }}</p>
+      </div>
+      <div class="card-price">
+        <h4>{{ produit.prix | currency:'EUR':'symbol':'1.2-2':'fr' }}</h4>
+      </div>
+        </div>
+  </div>
+</div>
+
+    
+
+    
